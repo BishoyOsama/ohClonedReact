@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.active{
+  @apply bg-white transition-all
+}
+
+.glass{
+   /* From https://css.glass */
+  background: rgba(232, 229, 228, 0.69);
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+  backdrop-filter: blur(5.3px);
+  -webkit-backdrop-filter: blur(5.3px);
+}
+.card:hover img, .card:hover video{
+  @apply lg:blur-[5px] transition-all duration-300
+}
+.card:hover > .card-effect{
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  @apply  rounded-xl transition-all duration-500
+}
+
+@media only screen and (max-width: 1024px){
+  .card:hover .arrow {
+    animation: none;
+  }
+}
+@media only screen and (min-width: 1024px){
+  
+  .card:hover .arrow{
+    animation: arrow;
+    animation-duration: 250ms;
+    animation-timing-function: ease-in-out;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+  }
+}
+.card:hover .brand{
+  animation: textOpacity;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in-out;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+}
+
+.card-effect{
+  display: none;
+  position: absolute;
+  box-shadow: none;
+  @apply  rounded-xl
+}
+
+.card-effect-sm{
+  display: flex;
+  position: absolute;
+  box-shadow: none;
+  @apply  rounded-xl
+}
+
+/* fade-up transition */
+.fade-up, .fade-up-delay ,.fade-profile-text{
+  transform: translateY(100px);
+  opacity: 0;
+  transition-property: transform, opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: linear;
+}
+.fade-up-delay{
+  transition-delay: 0.5s;
+}
+.fade-profile-text{
+  transition-delay: 0.01s;
+}
+.in-view {
+  transform: none;
+  opacity: 1;
+}
+
+/* projects page */
+.projectMainImg{
+  object-position: center center;
+}
+
+
+.projectNav{
+  background: linear-gradient(rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+
+/* animations */
+
+@keyframes arrow {
+  0%{
+    transform: translateX(-20px) translateY(20px);
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes textOpacity {
+  0%{
+    opacity: 0.5;
+  }
+  100%{
+    opacity: 1;
+  }
+}
